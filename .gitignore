@@ -49,3 +49,12 @@ ENV/
 *.sublime-workspace
 .DS_Store
 Thumbs.db
+
+# Expo & Mobile
+.expo/
+*/.expo/
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision

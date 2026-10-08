@@ -51,4 +51,9 @@ public class ServiceProviderProfile {
 
     @Builder.Default
     private Double baseFee = 500.0;
+
+    @Builder.Default
+    private Boolean open24x7 = false;
+
+    private Double distanceFromMRUKm;
 }

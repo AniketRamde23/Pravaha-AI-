@@ -10,5 +10,6 @@ import java.util.Optional;
 @Repository
 public interface ServiceProviderProfileRepository extends MongoRepository<ServiceProviderProfile, String> {
     Optional<ServiceProviderProfile> findByUserId(String userId);
+    Optional<ServiceProviderProfile> findByBusinessName(String businessName);
     List<ServiceProviderProfile> findByAvailableTrue();
 }

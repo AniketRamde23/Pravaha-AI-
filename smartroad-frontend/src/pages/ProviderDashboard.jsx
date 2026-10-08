@@ -81,17 +81,31 @@ export default function ProviderDashboard() {
   return (
     <div className="container" style={{ paddingTop: '2.5rem', paddingBottom: '4rem' }}>
       {/* Top Banner */}
-      <div className="glass-card" style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
-        <div>
-          <span className="badge" style={{ background: 'rgba(245, 158, 11, 0.15)', color: '#f59e0b', border: '1px solid rgba(245, 158, 11, 0.3)', marginBottom: '0.5rem' }}>
-            Pravaha AI • Service Provider Portal
-          </span>
-          <h1 style={{ fontSize: '1.8rem', fontWeight: '800' }}>
-            {profile?.businessName || user?.fullName}
-          </h1>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginTop: '0.2rem' }}>
-            Contact: {user?.phone} • {profile?.address || 'Registered Location'}
-          </p>
+      <div className="glass-card" style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1.25rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+          <img
+            src="/media/technician-arrived.jpg"
+            alt="Technician on Duty"
+            style={{
+              width: '74px',
+              height: '74px',
+              borderRadius: '16px',
+              objectFit: 'cover',
+              border: '2px solid rgba(245, 158, 11, 0.4)',
+              boxShadow: '0 8px 16px rgba(0, 0, 0, 0.4)'
+            }}
+          />
+          <div>
+            <span className="badge" style={{ background: 'rgba(245, 158, 11, 0.15)', color: '#f59e0b', border: '1px solid rgba(245, 158, 11, 0.3)', marginBottom: '0.4rem' }}>
+              Pravaha AI • Service Provider Portal
+            </span>
+            <h1 style={{ fontSize: '1.8rem', fontWeight: '800', margin: 0 }}>
+              {profile?.businessName || user?.fullName}
+            </h1>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginTop: '0.2rem', marginBottom: 0 }}>
+              Contact: {user?.phone} • {profile?.address || 'Registered Location'}
+            </p>
+          </div>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>

@@ -68,7 +68,8 @@ graph TD
 
 | Layer | Technologies |
 |---|---|
-| **Frontend** | React 19, Vite, React Router 7, Leaflet OpenStreetMap, Lucide Icons, Modern Vanilla CSS Design System |
+| **Web Frontend** | React 19, Vite, React Router 7, Leaflet OpenStreetMap, Lucide Icons, Modern Vanilla CSS Design System |
+| **Mobile App** | React Native (Expo SDK 57), Safe Area Context, Async Storage, Expo Location GPS, Vector Icons |
 | **Core Backend** | Java 17/21, Spring Boot 3, Spring Security 6, JWT (JJWT), Spring Data MongoDB, Spring WebFlux |
 | **AI Microservice** | Python 3.11+, FastAPI, Pydantic v2, Uvicorn, NumPy / Scikit-Learn |
 | **Database** | MongoDB 6.0+ |
@@ -104,13 +105,29 @@ cd smartroad-backend
 ```
 > Running at: `http://localhost:8080`
 
-### 4. Start React Frontend
+### 4. Start React Frontend (Web)
 ```bash
 cd smartroad-frontend
 npm install
 npm run dev
 ```
 > Running at: `http://localhost:5173`
+
+### 5. Start Pravaha AI Mobile App (iOS / Android / PC Emulator)
+- **Zero-Setup PC Emulator (No phone needed)**:
+  ```bash
+  cd smartroad-mobile
+  npm run web
+  ```
+  *(Or double-click [launch-mobile-emulator.bat](file:///d:/Projects/Major-proj-1/launch-mobile-emulator.bat))*  
+  Opens a realistic interactive smartphone simulator (iPhone 15 / Pixel 8 frame) in your browser at `http://localhost:8081`.
+
+- **Physical Phone (Expo Go)**:
+  ```bash
+  cd smartroad-mobile
+  npm start
+  ```
+  Scan the generated QR code in **Expo Go** on your physical phone, or press <kbd>w</kbd> to switch to PC emulator mode.
 
 ---
 

@@ -147,6 +147,8 @@ public class DispatchService {
                         .etaRange(etaRange)
                         .suitabilityScore(score)
                         .isRecommended(false)
+                        .open24x7(p.getOpen24x7())
+                        .distanceFromMRUKm(p.getDistanceFromMRUKm())
                         .build());
             }
         }
@@ -189,6 +191,18 @@ public class DispatchService {
         String etaRange = Math.max(2, eta - 2) + "–" + (eta + 3) + " mins";
 
         Instant now = Instant.now();
+
+        // Auto-cancel previous open requests for this driver to avoid multiple active requests
+        List<RequestStatus> terminal = List.of(RequestStatus.COMPLETED, RequestStatus.CANCELLED, RequestStatus.REJECTED);
+        List<BreakdownRequest> previousRequests = requestRepository.findByDriverIdOrderByCreatedAtDesc(driverUserId);
+        for (BreakdownRequest prev : previousRequests) {
+            if (!terminal.contains(prev.getStatus())) {
+                prev.setStatus(RequestStatus.CANCELLED);
+                prev.setUpdatedAt(now);
+                requestRepository.save(prev);
+            }
+        }
+
         List<StatusHistoryItem> history = new ArrayList<>();
         history.add(StatusHistoryItem.builder()
                 .status(RequestStatus.REQUESTED)
@@ -253,6 +267,19 @@ public class DispatchService {
             req.setAcceptedAt(Instant.now());
         } else if (newStatus == RequestStatus.COMPLETED || newStatus == RequestStatus.SERVICE_COMPLETED) {
             req.setCompletedAt(Instant.now());
+        } else if (newStatus == RequestStatus.CANCELLED && req.getDriverId() != null) {
+            List<BreakdownRequest> allDriverReqs = requestRepository.findByDriverIdOrderByCreatedAtDesc(req.getDriverId());
+            for (BreakdownRequest other : allDriverReqs) {
+                if (!other.getId().equals(requestId) && (other.getStatus() == RequestStatus.REQUESTED || other.getStatus() == RequestStatus.ACCEPTED)) {
+                    other.setStatus(RequestStatus.CANCELLED);
+                    other.setUpdatedAt(Instant.now());
+                    requestRepository.save(other);
+                }
+            }
+        }
+
+        if (req.getStatusHistory() == null) {
+            req.setStatusHistory(new ArrayList<>());
         }
 
         req.getStatusHistory().add(StatusHistoryItem.builder()

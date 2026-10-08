@@ -42,13 +42,13 @@ export default function Login() {
 
   const handleDemoFill = (roleType) => {
     if (roleType === 'DRIVER') {
-      setEmail('rahul.driver@example.com');
-      setPassword('Password@123');
+      setEmail('driver@smartroad.ai');
+      setPassword('Driver@123');
     } else if (roleType === 'PROVIDER') {
       setEmail('provider@smartroad.ai');
       setPassword('Provider@123');
     } else if (roleType === 'ADMIN') {
-      setEmail('2311IT010159@mallareddyuniversity.ac.in');
+      setEmail('2311it010159@mallareddyuniversity.ac.in');
       setPassword('Aniket@123');
     }
   };

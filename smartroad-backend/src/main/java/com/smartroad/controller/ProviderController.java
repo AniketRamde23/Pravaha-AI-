@@ -64,7 +64,23 @@ public class ProviderController {
             @RequestBody Map<String, String> body) {
         String statusStr = body.get("status");
         String note = body.get("note");
-        RequestStatus newStatus = RequestStatus.valueOf(statusStr);
+        RequestStatus newStatus;
+        if (statusStr != null) {
+            String upper = statusStr.trim().toUpperCase();
+            if ("EN_ROUTE".equals(upper) || "PROVIDER_EN_ROUTE".equals(upper)) {
+                newStatus = RequestStatus.EN_ROUTE;
+            } else if ("ON_SCENE".equals(upper) || "ARRIVED".equals(upper)) {
+                newStatus = RequestStatus.ON_SCENE;
+            } else {
+                try {
+                    newStatus = RequestStatus.valueOf(upper);
+                } catch (IllegalArgumentException e) {
+                    newStatus = RequestStatus.ACCEPTED;
+                }
+            }
+        } else {
+            newStatus = RequestStatus.ACCEPTED;
+        }
         BreakdownRequest updated = dispatchService.updateStatus(id, newStatus, note);
         return ResponseEntity.ok(updated);
     }

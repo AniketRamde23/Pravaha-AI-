@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "Pravaha AI Mobile",
+    "slug": "pravaha-mobile",
+    "version": "2.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#0a0e17",
+    "splash": {
+      "backgroundColor": "#0a0e17"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.pravaha.mobile",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Pravaha AI requires your GPS coordinates to locate your vehicle during highway breakdowns and dispatch nearby mechanics."
+      }
+    },
+    "android": {
+      "package": "com.pravaha.mobile",
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION"
+      ],
+      "adaptiveIcon": {
+        "backgroundColor": "#0a0e17",
+        "foregroundImage": "./assets/android-icon-foreground.png"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}

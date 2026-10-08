@@ -4,10 +4,12 @@ server:
 spring:
   application:
     name: smartroad-backend
+  mongodb:
+    uri: ${SPRING_DATA_MONGODB_URI:mongodb+srv://smartroad_admin:smartroad_admin_23@cluster0.7vixs62.mongodb.net/smartroad_db?retryWrites=true&w=majority&appName=Cluster0}
   data:
     mongodb:
       database: smartroad_db
-      uri: mongodb://localhost:27017/smartroad_db
+      uri: ${SPRING_DATA_MONGODB_URI:mongodb+srv://smartroad_admin:smartroad_admin_23@cluster0.7vixs62.mongodb.net/smartroad_db?retryWrites=true&w=majority&appName=Cluster0}
       auto-index-creation: false
 
 smartroad:

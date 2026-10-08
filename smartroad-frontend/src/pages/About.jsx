@@ -120,19 +120,46 @@ export default function About() {
             </div>
           </div>
 
-          <div style={{ textAlign: 'center' }}>
-            <img 
-              src={homeImg} 
-              alt="Breakdown Assistance" 
-              style={{
-                width: '100%',
-                maxHeight: '380px',
-                objectFit: 'cover',
-                borderRadius: '16px',
-                border: '1px solid var(--border-color)',
-                boxShadow: '0 20px 40px rgba(0,0,0,0.6)'
-              }} 
-            />
+          <div style={{ textAlign: 'center', position: 'relative' }}>
+            <div style={{
+              position: 'relative',
+              borderRadius: '20px',
+              overflow: 'hidden',
+              border: '1px solid rgba(56, 189, 248, 0.3)',
+              boxShadow: '0 20px 40px rgba(0, 0, 0, 0.6)'
+            }}>
+              <img 
+                src="/media/futuristic-road.jpg" 
+                alt="Intelligent Highway Safety Network" 
+                style={{
+                  width: '100%',
+                  maxHeight: '380px',
+                  objectFit: 'cover',
+                  display: 'block'
+                }} 
+              />
+              <div style={{
+                position: 'absolute',
+                bottom: '12px',
+                left: '12px',
+                right: '12px',
+                background: 'rgba(10, 14, 23, 0.8)',
+                backdropFilter: 'blur(10px)',
+                padding: '0.6rem 1rem',
+                borderRadius: '12px',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center'
+              }}>
+                <span style={{ fontSize: '0.8rem', color: '#38bdf8', fontWeight: '600' }}>
+                  Smart Highway Ecosystem
+                </span>
+                <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>
+                  Real-Time AI Telemetry
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </section>

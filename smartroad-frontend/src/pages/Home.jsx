@@ -141,21 +141,163 @@ export default function Home() {
               </div>
             </div>
 
-            <div style={{ textAlign: 'center' }}>
-              <img
-                src={homeImg}
-                alt="On-Road Vehicle Breakdown Assistance"
-                style={{
-                  width: '100%',
-                  maxHeight: '380px',
-                  objectFit: 'cover',
-                  borderRadius: '16px',
-                  border: '1px solid var(--border-color)',
-                  boxShadow: '0 20px 40px rgba(0, 0, 0, 0.5)'
-                }}
-              />
+            <div style={{ textAlign: 'center', position: 'relative' }}>
+              <div style={{
+                position: 'relative',
+                borderRadius: '20px',
+                overflow: 'hidden',
+                border: '1px solid rgba(56, 189, 248, 0.4)',
+                boxShadow: '0 25px 50px -12px rgba(6, 182, 212, 0.25), 0 0 30px rgba(56, 189, 248, 0.2)',
+                background: '#090d16'
+              }}>
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  style={{
+                    width: '100%',
+                    height: '360px',
+                    objectFit: 'cover',
+                    display: 'block'
+                  }}
+                  poster="/media/futuristic-road.jpg"
+                >
+                  <source src="/media/hero-radar.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+                <div style={{
+                  position: 'absolute',
+                  bottom: '12px',
+                  left: '12px',
+                  right: '12px',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  padding: '0.6rem 1rem',
+                  background: 'rgba(10, 14, 23, 0.75)',
+                  backdropFilter: 'blur(10px)',
+                  borderRadius: '12px',
+                  border: '1px solid rgba(255, 255, 255, 0.1)'
+                }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.8rem', color: '#38bdf8', fontWeight: '600' }}>
+                    <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#38bdf8', display: 'inline-block', boxShadow: '0 0 8px #38bdf8' }} />
+                    Live Holographic Dispatch Radar
+                  </div>
+                  <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>
+                    AI GPS Telemetry Active
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Visual 4-Step Breakdown Lifecycle Section */}
+      <section style={{ marginBottom: '4.5rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+          <span className="badge badge-tech" style={{ marginBottom: '0.5rem' }}>
+            <Sparkles size={13} /> The Pravaha AI Advantage
+          </span>
+          <h2 style={{ fontSize: '2.2rem', fontWeight: '800' }}>How Intelligent Assistance Works</h2>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginTop: '0.25rem' }}>
+            From highway breakdown to verified on-scene technician arrival in 4 seamless stages
+          </p>
+        </div>
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+          gap: '1.5rem'
+        }}>
+          {[
+            {
+              step: '01',
+              title: 'Stranded Driver Alert',
+              desc: 'One-touch SOS report with live GPS lock and vehicle details automatically captured.',
+              image: '/media/stranded-driver.jpg',
+              tag: '1-Click SOS',
+              color: '#f87171'
+            },
+            {
+              step: '02',
+              title: 'AI Symptom Diagnostic',
+              desc: 'FastAPI microservice analyzes mechanical failure, predicts severity, and selects required tools.',
+              image: '/media/ai-diagnostics.jpg',
+              tag: 'FastAPI ML',
+              color: '#38bdf8'
+            },
+            {
+              step: '03',
+              title: 'Intelligent Proximity Match',
+              desc: 'Geodesic Haversine algorithm scans a 15km radius for highest-rated on-duty specialists.',
+              image: '/media/ai-matching.jpg',
+              tag: 'Haversine Radar',
+              color: '#a78bfa'
+            },
+            {
+              step: '04',
+              title: 'Rapid On-Scene Recovery',
+              desc: 'Verified mechanic arrives with live Leaflet route tracking and real-time mission status updates.',
+              image: '/media/technician-arrived.jpg',
+              tag: 'Verified Tech',
+              color: '#34d399'
+            }
+          ].map((item, idx) => (
+            <div
+              key={idx}
+              className="glass-card"
+              style={{
+                padding: '0',
+                borderRadius: '16px',
+                overflow: 'hidden',
+                border: '1px solid var(--border-color)',
+                display: 'flex',
+                flexDirection: 'column'
+              }}
+            >
+              <div style={{ position: 'relative', height: '170px', overflow: 'hidden' }}>
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    transition: 'transform 0.4s ease'
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.06)'}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1.0)'}
+                />
+                <span style={{
+                  position: 'absolute',
+                  top: '10px',
+                  left: '10px',
+                  background: 'rgba(10, 14, 23, 0.85)',
+                  backdropFilter: 'blur(6px)',
+                  color: item.color,
+                  fontSize: '0.72rem',
+                  fontWeight: '700',
+                  padding: '0.25rem 0.6rem',
+                  borderRadius: '20px',
+                  border: `1px solid ${item.color}50`
+                }}>
+                  {item.step} • {item.tag}
+                </span>
+              </div>
+              <div style={{ padding: '1.25rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                <div>
+                  <h4 style={{ fontSize: '1.1rem', fontWeight: '700', marginBottom: '0.5rem', color: 'white' }}>
+                    {item.title}
+                  </h4>
+                  <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: '1.5', margin: 0 }}>
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 

@@ -61,10 +61,10 @@ export default function AssistanceMap({ driverLocation, providers = [], selected
             icon={providerIcon}
           >
             <Popup>
-              <strong>🔧 {p.businessName}</strong><br />
-              Distance: {p.distanceKm} km<br />
-              Rating: {p.rating} ⭐<br />
-              ETA: {p.etaRange || `${p.etaMinutes} mins`}
+              <strong>🔧 {p.businessName}</strong> {p.open24x7 ? '🟢 24x7' : ''}<br />
+              Distance: {p.distanceKm} km {p.distanceFromMRUKm != null ? `(${p.distanceFromMRUKm} km from MRU)` : ''}<br />
+              Rating: {p.rating} ⭐ ({p.totalRatings || 0} reviews)<br />
+              ETA: {p.etaRange || `${p.etaMinutes} mins`} • Fee: ₹{p.baseFee}
             </Popup>
           </Marker>
         ))}

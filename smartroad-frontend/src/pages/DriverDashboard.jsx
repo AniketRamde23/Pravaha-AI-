@@ -447,6 +447,37 @@ export default function DriverDashboard() {
 
           {/* Symptoms & AI Diagnostic Inference */}
           <div style={{ marginBottom: '1.5rem', background: '#0a0e17', padding: '1.25rem', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
+            <div style={{
+              display: 'flex',
+              gap: '1rem',
+              alignItems: 'center',
+              marginBottom: '1rem',
+              padding: '0.75rem',
+              background: 'rgba(56, 189, 248, 0.05)',
+              borderRadius: '8px',
+              border: '1px solid rgba(56, 189, 248, 0.15)'
+            }}>
+              <img
+                src="/media/ai-diagnostics.jpg"
+                alt="AI Diagnostics Engine"
+                style={{
+                  width: '72px',
+                  height: '72px',
+                  borderRadius: '10px',
+                  objectFit: 'cover',
+                  border: '1px solid rgba(56, 189, 248, 0.3)'
+                }}
+              />
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: '0.88rem', fontWeight: '700', color: '#38bdf8' }}>
+                  FastAPI Heuristic AI Diagnostic Engine
+                </div>
+                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
+                  Our neural classifier analyzes symptoms to auto-select required technician equipment and estimate severity.
+                </div>
+              </div>
+            </div>
+
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
               <label style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
                 2. Describe Observed Symptoms / Warning Signs
@@ -548,9 +579,38 @@ export default function DriverDashboard() {
                         {p.address}
                       </div>
 
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '0.85rem' }}>
-                        <span style={{ color: 'var(--accent-cyan)' }}>📍 {p.distanceKm} km</span>
-                        <span style={{ color: '#facc15' }}>⭐ {p.rating?.toFixed(1)}</span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '0.4rem' }}>
+                        {p.open24x7 && (
+                          <span style={{
+                            background: 'rgba(16, 185, 129, 0.2)',
+                            color: '#34d399',
+                            fontSize: '0.7rem',
+                            fontWeight: '700',
+                            padding: '0.15rem 0.45rem',
+                            borderRadius: '10px',
+                            border: '1px solid rgba(16, 185, 129, 0.4)'
+                          }}>
+                            🟢 OPEN 24x7
+                          </span>
+                        )}
+                        {p.distanceFromMRUKm != null && (
+                          <span style={{
+                            background: 'rgba(147, 51, 234, 0.15)',
+                            color: '#c084fc',
+                            fontSize: '0.7rem',
+                            fontWeight: '600',
+                            padding: '0.15rem 0.45rem',
+                            borderRadius: '10px',
+                            border: '1px solid rgba(147, 51, 234, 0.3)'
+                          }}>
+                            MRU: {p.distanceFromMRUKm} km
+                          </span>
+                        )}
+                      </div>
+
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', fontSize: '0.85rem', flexWrap: 'wrap' }}>
+                        <span style={{ color: 'var(--accent-cyan)' }}>📍 {p.distanceKm} km away</span>
+                        <span style={{ color: '#facc15' }}>⭐ {p.rating?.toFixed(1)} ({p.totalRatings || 0})</span>
                         <span style={{ color: '#34d399' }}>⏱ {p.etaRange || `${p.etaMinutes} mins`}</span>
                         <span style={{ color: 'white', fontWeight: '600' }}>₹{p.baseFee}</span>
                       </div>

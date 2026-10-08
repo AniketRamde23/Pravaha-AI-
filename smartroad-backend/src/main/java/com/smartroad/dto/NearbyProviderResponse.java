@@ -27,4 +27,6 @@ public class NearbyProviderResponse {
     private String etaRange;
     private Double suitabilityScore;
     private boolean isRecommended;
+    private Boolean open24x7;
+    private Double distanceFromMRUKm;
 }
