@@ -5,15 +5,15 @@ import { Platform } from 'react-native';
 const STORAGE_KEY_TOKEN = '@pravaha_token';
 const STORAGE_KEY_BASE_URL = '@pravaha_base_url';
 
-// Smart default: 10.0.2.2 for Android emulator, LAN IP 172.19.50.41 for real device, localhost for iOS simulator/web
+// Smart default: 192.168.0.4 for real Android phone & Expo Go, 10.0.2.2 for Android emulator, localhost for iOS simulator/web
 export const DEFAULT_BASE_URL = Platform.select({
-  android: 'http://172.19.50.41:8080/api', // default to host machine LAN for real phones & expo go
+  android: 'http://192.168.0.4:8080/api', // default to host machine LAN for real phones & expo go
   ios: 'http://localhost:8080/api',
   default: 'http://localhost:8080/api',
 });
 
 export const PRESET_URLS = [
-  { label: 'Local LAN (172.19.50.41)', url: 'http://172.19.50.41:8080/api' },
+  { label: 'Current Wi-Fi LAN (192.168.0.4)', url: 'http://192.168.0.4:8080/api' },
   { label: 'Android Emulator (10.0.2.2)', url: 'http://10.0.2.2:8080/api' },
   { label: 'Localhost (Simulator/Web)', url: 'http://localhost:8080/api' },
 ];

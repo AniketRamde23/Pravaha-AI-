@@ -1,7 +1,8 @@
-import axios from 'axios';
+// Dynamic base URL for deployment environments (e.g. Vercel), fallback to localhost for local dev
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api';
 
 export const api = axios.create({
-  baseURL: 'http://localhost:8080/api',
+  baseURL: API_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },
